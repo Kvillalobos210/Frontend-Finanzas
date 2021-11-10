@@ -1,0 +1,285 @@
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="note">
+    <p>Cartera de Facturas descontadas a Tasa Efectiva</p>
+</div>
+
+<form class="form-content">
+<fieldset>
+    
+<!-- Form Name -->
+<!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
+<h3 align="center" > Tasa y Plazo <br /> </h3>
+<br /> <br />
+
+<div class="row justify-content-around">
+    <label class="col-sm-6 control-label" for="textNombres">(DA) Días por año  </label>  
+    <div class="col-sm-3">
+        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+         
+          <option value="d">360 días</option>
+          <option value="d">365 días</option>
+         
+
+        </select>
+      </div>
+
+    
+      
+</div>
+
+
+     
+
+<h6></h6>
+
+<!-- Text input-->
+<div class="row justify-content-around">
+    <label class="col-sm-2 control-label" for="textNombres">(PD) Plazo de Tasa  </label>  
+    <div class="col-sm-3">
+        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+         
+          <option value="d">Anual</option>
+          <option value="d">Diario</option>
+          <option value="d">Quincenal</option>
+          <option value="d">Mensual</option>
+          <option value="d">Bimestral</option>
+          <option value="d">Trimestral</option>
+          <option value="d">Cuatrimestral</option>
+          <option value="d">Semestral</option>
+          <option value="d">Especial</option>
+
+        </select>
+      </div>
+
+      <div class="col-3">
+        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+         
+          <option value="d">360</option>
+      
+
+        </select>
+      </div>
+      
+</div>
+
+<h6></h6>
+<!-- Text input-->
+<div class="row justify-content-around">
+    <label class="col-3 control-label" for="textNombres">(TE) Tasa Efectiva </label>  
+    <div class="col-6">
+    <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+    </div>
+  </div>
+
+  <h6></h6>
+<!-- Text input-->
+<div class="row justify-content-around">
+    <label class="col-3 control-label" for="textNombres">(FD) Fecha de Descuento</label>  
+    
+    <div class="col-6">
+    <input id="textNombres" name="textNombres" type="text" class="form-control input-md" required="">
+    </div>
+
+    
+    
+  </div>
+
+
+  <h6></h6>
+
+
+
+</fieldset>
+</form>
+
+
+<form class="form-content">
+    <fieldset>
+        
+    <!-- Form Name -->
+    <!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
+    <h3 align="center"> Datos de la Factura <br /> </h3>
+    <br /> <br />
+    
+    
+    
+    <!-- Text input-->
+    <div class="row justify-content-around">
+      <label class="col-3 control-label" for="textNombres">(FE) Fecha de Emisión  </label>  
+      <div class="col-5">
+      <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+      </div>
+    </div>
+    
+    <h6></h6>
+    
+    <div class="row justify-content-around">
+        <label class="col-3 control-label" for="textNombres">(FP) Fecha de Pago  </label>  
+        <div class="col-5">
+        <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+        </div>
+      </div>
+    
+    <h6></h6>
+    <!-- Text input-->
+    <div class="row justify-content-around">
+        <label class="col-3 control-label" for="textNombres">(TF) Total Facturado </label>  
+        <div class="col-5">
+        <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+        </div>
+      </div>
+    
+      <h6></h6>
+    <!-- Text input-->
+    <div class="row justify-content-around">
+        <label class="col-3 control-label" for="textNombres">(Rt) Retención  </label>  
+        <div class="col-5">
+        <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+        </div>
+      </div>
+    
+    
+      <h6></h6>
+    
+    </fieldset>
+</form>
+
+
+
+<form class="form-content">
+    <fieldset>
+        
+    <!-- Form Name -->
+    <!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
+    <h3 align="center"> Costes / Gastos Iniciales <br /> </h3>
+    <br /> <br />
+    
+    <div class="row justify-content-around">
+        <label class="col-5 control-label" for="textNombres">Motivo </label>  
+        <div class="col-sm-3">
+            <select id="selectMotivo" name="selectMotivo" class="form-content">
+             
+              <option value="d">Portes</option>
+              <option value="d">Fotocopias</option>
+              <option value="d">Comisión de estudio</option>
+              <option value="d">Comisión de desembolso</option>
+              <option value="d">Comisión de intermediación</option>
+              <option value="d">Gastos Administrativos</option>
+              <option value="d">Gastos Notariales</option>
+              <option value="d">Gastos Registrales</option>
+              <option value="d">Seguro</option>
+              <option value="d">Otros gastos</option>
+    
+            </select>
+          </div>      
+    </div>
+    
+    
+         
+    
+    <h6></h6>
+    
+    <!-- Text input-->
+    
+    <div class="row justify-content-around">
+        <label class="col-1 control-label" for="textNombres">Valor expresado en  </label>  
+        <div class="col-sm-3">
+            <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+             
+              <option value="d">En efectivo</option>
+              <option value="d">Porcentaje</option>
+
+    
+            </select>
+          </div>
+    
+          <div class="col-3">
+            <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+            </div>
+          
+    </div>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <div class="row justify-content-around">
+      <button type="button" class="col-3 btn btn-info">Agregar</button>
+      <button type="button" class="col-3 btn btn-danger">Cancelar</button>
+      <button type="button" class="col-3 btn btn-dark">Eliminar</button>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <select style="width: 6000px;" id="lbGastosIni" size="9" multiple="multiple"></select>
+    </div>
+    
+    </fieldset>
+ </form>
+
+
+
+
+
+    <form class="form-content">
+        <fieldset>
+            
+        <!-- Form Name -->
+        <!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
+        <h3 align="center"> Costes / Gastos Finales <br /> </h3>
+        <br /> <br />
+        
+        <div class="row justify-content-around">
+          <label class="col-5 control-label" for="textNombres">Motivo </label>  
+          <div class="col-sm-3">
+              <select id="selectMotivo" name="selectMotivo" class="form-content">
+               
+                <option value="d">Portes</option>
+                <option value="d">Gastos Administrativos</option>
+                <option value="d">Otros gastos</option>
+      
+              </select>
+            </div>    
+      </div>
+      
+      <h6></h6>
+      
+      <!-- Text input-->
+      
+      <div class="row justify-content-around">
+          <label class="col-1 control-label" for="textNombres">Valor expresado en  </label>  
+          <div class="col-sm-3">
+              <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+               
+                <option value="d">En efectivo</option>
+                <option value="d">Porcentaje</option>
+  
+      
+              </select>
+            </div>
+      
+            <div class="col-3">
+              <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+              </div>
+            
+      </div>
+      <h6></h6>
+      <h6></h6>
+      <h6></h6>
+      <div class="row justify-content-around">
+        <button type="button" class="col-3 btn btn-info">Agregar</button>
+        <button type="button" class="col-3 btn btn-danger">Cancelar</button>
+        <button type="button" class="col-3 btn btn-dark">Eliminar</button>
+        <h6></h6>
+        <h6></h6>
+        <h6></h6>
+        <select style="width: 6000px;" id="lbGastosIni" size="9" multiple="multiple"></select>
+      </div>
+
+        
+     </fieldset>
+</form>
+

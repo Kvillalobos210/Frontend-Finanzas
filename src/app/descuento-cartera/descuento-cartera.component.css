@@ -1,0 +1,25 @@
+
+.form-content
+{
+    padding: 2%;
+    border: 1.5px solid #ced4da;
+    margin-bottom: 1%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, skyblue, rgb(250, 174, 250));
+    color: white;
+    font-weight: bold;
+    line-height: 80px;
+    font-size: xx-large;
+    
+}
+
+
+
+
