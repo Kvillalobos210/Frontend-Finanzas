@@ -5,14 +5,21 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container register">
-                <div class="row">
+                   <div class="row">
                     <div class="col-md-3 register-left">
                         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                         <h3>Bienvenido</h3>
                         <p>Crea una cuenta para tener todos los beneficios que ofrecemos</p>
                         
                     </div>
-                    <div class="col-md-9 register-right">
+
+                    <form (ngSubmit)="insertUser()">
+                    <div  class="col-md-9 register-right">
+
+                        <div>
+                            <input type="hidden" id="id" name="id"
+                            required [(ngModel)]="user.id">
+                        </div>
                       
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -20,29 +27,35 @@
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Nombre de la empresa " value="" />
+                                            <input type="text" class="form-control" placeholder="Nombre de la empresa " 
+                                            name= "name" required [(ngModel)]="user.name" />
+                                            
                                         </div>
+                                       
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Usuario " value="" />
+                                            <input type="password" class="form-control" placeholder="Contraseña"
+                                            name= "password" required [(ngModel)]="user.password" />
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Contraseña" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control"  placeholder="Confirmar contraseña" value="" />
-                                        </div>
+
                                        
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder=" Email " value="" />
+                                            <input type="email" class="form-control" placeholder=" Email " 
+                                            name= "email" required [(ngModel)]="user.email" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Teléfono" value="" />
+                                            <input type="text"  class="form-control" placeholder="Teléfono"
+                                            name= "phone" required [(ngModel)]="user.phone" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text"  class="form-control" placeholder="Direccion"
+                                            name= "address" required [(ngModel)]="user.address" />
                                         </div>
                                      
                                         <div>
-                                            <input type="submit" class="btnRegister"  value="Regístrate" >
+                                            <button type="submit" class ="btn btn-success">Regístrate</button>
                                         </div>
 
                                        
@@ -54,7 +67,8 @@
                            
                         </div>
                     </div>
-                </div>
 
-            </div>
+                    </form>
+                </div>
+</div>
 

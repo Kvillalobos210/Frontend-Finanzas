@@ -10,27 +10,35 @@
                     <p>Ingresa a tu cuenta para realizar las operaciones que desees</p>
                 </div>
 
+               
                 <div class="form-content">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Tu usuario" value=""/>
+                                <input type="text" class="form-control" placeholder="Tu usuario" 
+                                name= "Username" required [(ngModel)]="formModel.Username" />
                             </div>
                            
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Tu contraseña" value=""/>
+                                <input type="password" class="form-control" placeholder="Tu contraseña" 
+                                name= "password" required [(ngModel)]="formModel.Password" />
+
                             </div>
                            
                         </div>
                     </div>
 
-                    <button type="button" class="btnSubmit" routerLink="Ingresar">Ingresar</button>
+                    <div>
+                        <button type="submit" class ="btn btn-success">Ingresar</button>
+                    </div>
                     
 
           
                       
                 </div>
+            
+                
             </div>
 </div>
