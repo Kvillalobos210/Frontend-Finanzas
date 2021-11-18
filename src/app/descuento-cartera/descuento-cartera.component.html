@@ -14,66 +14,62 @@
     
 <!-- Form Name -->
 <!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
-<h3 align="center" > Tasa y Plazo <br /> </h3>
+<h3 aling="center" > Tasa y Plazo <br /> </h3>
 <br /> <br />
 
 <div class="row justify-content-around">
     <label class="col-sm-6 control-label" for="textNombres">(DA) Días por año  </label>  
     <div class="col-sm-3">
-        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
-         
-          <option value="d">360 días</option>
-          <option value="d">365 días</option>
-         
+        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content" [(ngModel)]="dias_ano">
+
+          <option value="360">360 días</option>
+          <option value="365">365 días</option>
 
         </select>
       </div>
+</div>
+
 
     
-      
-</div>
-
-
-     
-
-<h6></h6>
 
 <!-- Text input-->
 <div class="row justify-content-around">
-    <label class="col-sm-2 control-label" for="textNombres">(PD) Plazo de Tasa  </label>  
+    <label class="col-sm-6 control-label" for="textNombres">(PD) Plazo de Tasa  </label>  
     <div class="col-sm-3">
-        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content" [(ngModel)]="plazo_tasa">
          
-          <option value="d">Anual</option>
-          <option value="d">Diario</option>
-          <option value="d">Quincenal</option>
-          <option value="d">Mensual</option>
-          <option value="d">Bimestral</option>
-          <option value="d">Trimestral</option>
-          <option value="d">Cuatrimestral</option>
-          <option value="d">Semestral</option>
-          <option value="d">Especial</option>
+          <option value="Anual">Anual</option>
+          <option value="Diario">Diario</option>
+          <option value="Quincenal">Quincenal</option>
+          <option value="Mensual">Mensual</option>
+          <option value="Bimestral">Bimestral</option>
+          <option value="Trimestral">Trimestral</option>
+          <option value="Cuatrimestral">Cuatrimestral</option>
+          <option value="Semestral">Semestral</option>
+          <option value="Especial">Especial</option>
 
         </select>
-      </div>
+    </div>
+</div>
 
-      <div class="col-3">
-        <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
-         
-          <option value="d">360</option>
-      
+<div class="row justify-content-around">
+  <label class="col-sm-6 control-label" for="textNombres">(TT) Tipo de Tasa  </label>  
+  <div class="col-sm-3">
+      <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content" [(ngModel)]="tipo_tasa" >
+       
+        <option value="Efectiva">Efectiva</option>
+        <option value="Nominal">Nominal</option>
 
-        </select>
-      </div>
-      
+      </select>
+  </div>
 </div>
 
 <h6></h6>
 <!-- Text input-->
 <div class="row justify-content-around">
-    <label class="col-3 control-label" for="textNombres">(TE) Tasa Efectiva </label>  
+    <label class="col-3 control-label" for="tasaefectiva">(TE) Tasa Efectiva </label>  
     <div class="col-6">
-    <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+    <input id="tasaefectiva" name="tasaefectiva" type="text"  class="form-control input-md" required="" [(ngModel)]="tasa_efectiva" placeholder=" Tasa efectiva sin el %" >
     </div>
   </div>
 
@@ -81,19 +77,10 @@
 <!-- Text input-->
 <div class="row justify-content-around">
     <label class="col-3 control-label" for="textNombres">(FD) Fecha de Descuento</label>  
-    
     <div class="col-6">
-    <input id="textNombres" name="textNombres" type="text" class="form-control input-md" required="">
+    <input id="textNombres" name="textNombres" type="text" class="form-control input-md" required="" [(ngModel)]="fecha_descuento" placeholder="dia/mes/año" >
     </div>
-
-    
-    
   </div>
-
-
-  <h6></h6>
-
-
 
 </fieldset>
 </form>
@@ -104,43 +91,47 @@
         
     <!-- Form Name -->
     <!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
-    <h3 align="center"> Datos de la Factura <br /> </h3>
+    <h3 aling="center"> Datos de la Factura <br /> </h3>
     <br /> <br />
     
     
     
     <!-- Text input-->
-    <div class="row justify-content-around">
-      <label class="col-3 control-label" for="textNombres">(FE) Fecha de Emisión  </label>  
+    <div  class="row justify-content-around">
+      <label class="col-3 control-label" for="fecha_emision">(FE) Fecha de Emisión  </label>  
       <div class="col-5">
-      <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+      <input id="fecha_emision" name="fecha_emision"  type="text" 
+       class="form-control input-md"  required="" [(ngModel)]="fecha_emision">
       </div>
     </div>
     
     <h6></h6>
     
     <div class="row justify-content-around">
-        <label class="col-3 control-label" for="textNombres">(FP) Fecha de Pago  </label>  
+        <label class="col-3 control-label" for="fecha_pago">(FP) Fecha de Pago  </label>  
         <div class="col-5">
-        <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+        <input id="fecha_pago" name="fecha_pago"
+         type="text"  class="form-control input-md"  required="" [(ngModel)]="fecha_pago">
         </div>
       </div>
     
     <h6></h6>
     <!-- Text input-->
     <div class="row justify-content-around">
-        <label class="col-3 control-label" for="textNombres">(TF) Total Facturado </label>  
+        <label class="col-3 control-label" for="total_facturado">(TF) Total Facturado </label>  
         <div class="col-5">
-        <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+        <input id="total_facturado" name="total_facturado" type="text" 
+         class="form-control input-md" required="" [(ngModel)]="total_facturado">
         </div>
       </div>
     
       <h6></h6>
     <!-- Text input-->
     <div class="row justify-content-around">
-        <label class="col-3 control-label" for="textNombres">(Rt) Retención  </label>  
+        <label class="col-3 control-label" for="retencion">(Rt) Retención  </label>  
         <div class="col-5">
-        <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+        <input id="retencion" name="retencion" type="text" 
+         class="form-control input-md" required="" [(ngModel)]="retencion">
         </div>
       </div>
     
@@ -157,24 +148,24 @@
         
     <!-- Form Name -->
     <!--<legend>Pre-Inscripción | Doctorado en Derecho y Ciencias Políticas </legend>-->
-    <h3 align="center"> Costes / Gastos Iniciales <br /> </h3>
+    <h3 aling="center"> Costes / Gastos Iniciales <br /> </h3>
     <br /> <br />
     
     <div class="row justify-content-around">
         <label class="col-5 control-label" for="textNombres">Motivo </label>  
         <div class="col-sm-3">
-            <select id="selectMotivo" name="selectMotivo" class="form-content">
+            <select id="selectMotivo" name="selectMotivo" class="form-content" [(ngModel)]="motivo">
              
-              <option value="d">Portes</option>
-              <option value="d">Fotocopias</option>
-              <option value="d">Comisión de estudio</option>
-              <option value="d">Comisión de desembolso</option>
-              <option value="d">Comisión de intermediación</option>
-              <option value="d">Gastos Administrativos</option>
-              <option value="d">Gastos Notariales</option>
-              <option value="d">Gastos Registrales</option>
-              <option value="d">Seguro</option>
-              <option value="d">Otros gastos</option>
+              <option value="portes">Portes</option>
+              <option value="fotocopias">Fotocopias</option>
+              <option value="c_estudio">Comisión de estudio</option>
+              <option value="c_desembolso">Comisión de desembolso</option>
+              <option value="c_intermediación">Comisión de intermediación</option>
+              <option value="administrativos">Gastos Administrativos</option>
+              <option value="notariales">Gastos Notariales</option>
+              <option value="registrales">Gastos Registrales</option>
+              <option value="seguro">Seguro</option>
+              <option value="otro">Otros gastos</option>
     
             </select>
           </div>      
@@ -190,31 +181,42 @@
     <div class="row justify-content-around">
         <label class="col-1 control-label" for="textNombres">Valor expresado en  </label>  
         <div class="col-sm-3">
-            <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+            <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content" [(ngModel)]="tipo">
              
-              <option value="d">En efectivo</option>
-              <option value="d">Porcentaje</option>
+              <option value="efectivo">En efectivo</option>
+              <option value="porcentaje">Porcentaje</option>
 
     
             </select>
           </div>
     
           <div class="col-3">
-            <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+            <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="" [(ngModel)]="valor">
             </div>
-          
     </div>
-    <h6></h6>
-    <h6></h6>
-    <h6></h6>
     <div class="row justify-content-around">
-      <button type="button" class="col-3 btn btn-info">Agregar</button>
+      <button type="button" class="col-3 btn btn-info" (click)="agregar_list_cgi(motivo,tipo,valor)">Agregar</button>
       <button type="button" class="col-3 btn btn-danger">Cancelar</button>
       <button type="button" class="col-3 btn btn-dark">Eliminar</button>
-      <h6></h6>
-      <h6></h6>
-      <h6></h6>
-      <select style="width: 6000px;" id="lbGastosIni" size="9" multiple="multiple"></select>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let list_cgis of list_cgi; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{list_cgis.motivo}}</td>
+            <td>{{list_cgis.tipo}}</td>
+            <td>{{list_cgis.valor}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     
     </fieldset>
@@ -233,13 +235,13 @@
         <br /> <br />
         
         <div class="row justify-content-around">
-          <label class="col-5 control-label" for="textNombres">Motivo </label>  
+          <label class="col-5 control-label" for="selectMotivo">Motivo </label>  
           <div class="col-sm-3">
-              <select id="selectMotivo" name="selectMotivo" class="form-content">
+              <select id="selectMotivo" name="selectMotivo" class="form-content" [(ngModel)]="motivof">
                
-                <option value="d">Portes</option>
-                <option value="d">Gastos Administrativos</option>
-                <option value="d">Otros gastos</option>
+                <option value="Portes">Portes</option>
+                <option value="Gastos Administrativos">Gastos Administrativos</option>
+                <option value="Otros gastos">Otros gastos</option>
       
               </select>
             </div>    
@@ -252,17 +254,17 @@
       <div class="row justify-content-around">
           <label class="col-1 control-label" for="textNombres">Valor expresado en  </label>  
           <div class="col-sm-3">
-              <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content">
+              <select id="selectPlazoDeTasa" name="selectPlazoDeTasa" class="form-content" [(ngModel)]="tipof">
                
-                <option value="d">En efectivo</option>
-                <option value="d">Porcentaje</option>
+                <option value="efectivo">En efectivo</option>
+                <option value="porcentaje">Porcentaje</option>
   
       
               </select>
             </div>
       
             <div class="col-3">
-              <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="">
+              <input id="textNombres" name="textNombres" type="text"  class="form-control input-md" required="" [(ngModel)]="valorf">
               </div>
             
       </div>
@@ -270,16 +272,66 @@
       <h6></h6>
       <h6></h6>
       <div class="row justify-content-around">
-        <button type="button" class="col-3 btn btn-info">Agregar</button>
+        <button type="button" class="col-3 btn btn-info" (click)="agregar_list_cgf(motivof,tipof,valorf)">Agregar</button>
         <button type="button" class="col-3 btn btn-danger">Cancelar</button>
         <button type="button" class="col-3 btn btn-dark">Eliminar</button>
         <h6></h6>
         <h6></h6>
         <h6></h6>
-        <select style="width: 6000px;" id="lbGastosIni" size="9" multiple="multiple"></select>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Motivo</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let list_cgfs of list_cgf; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{list_cgfs.motivo}}</td>
+              <td>{{list_cgfs.tipo}}</td>
+              <td>{{list_cgfs.valor}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
         
      </fieldset>
 </form>
+
+<div id ="div1" class="row justify-content-around" >
+  <button type="button" class="col-3 btn btn-info"  (click)=contador() (click)="calcular_tcea()" 
+  
+  >Agregar Factura</button>
+</div>
+
+<div>
+  <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">TCEA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let list_facturas of list_factura; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{list_facturas.tcea}}</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+
+<div class="row justify-content-around">
+  <button type="button" class="col-6 btn btn-info" (click)=IRRCalc()
+  
+  >Calcular TCEA de cartera</button>
+</div>
+
+<div>
+   {{TCEA}}
+</div>
 
