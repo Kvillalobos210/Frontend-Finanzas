@@ -7,24 +7,24 @@ import { Component, OnInit, ɵCompiler_compileModuleAndAllComponentsAsync__POST_
 })
 export class DescuentoCarteraComponent implements OnInit {
 
-  dias_ano='360'
-  plazo_tasa='Anual'
-  tipo_tasa='Efectivo'
-  tasa_efectiva='14.8'
-  fecha_descuento='04/05/2021'
+  dias_ano=''
+  plazo_tasa=''
+  tipo_tasa=''
+  tasa_efectiva=''
+  fecha_descuento=''
 
-  fecha_emision='11/04/2021'
-  fecha_pago='10/07/2021'
-  total_facturado='8538'
-  retencion='0'
+  fecha_emision=''
+  fecha_pago=''
+  total_facturado=''
+  retencion=''
   
   motivo=''
   tipo=''
   valor=''
   list_cgi=[{
     motivo:'',
-    tipo:'En efectivo',
-    valor:'11.7'
+    tipo:'',
+    valor:''
   }];
 
   motivof=''
@@ -32,8 +32,8 @@ export class DescuentoCarteraComponent implements OnInit {
   valorf=''
   list_cgf=[{
     motivo:'',
-    tipo:'En efectivo',
-    valor:'17'
+    tipo:'',
+    valor:''
   }];
 
   list_factura=[{

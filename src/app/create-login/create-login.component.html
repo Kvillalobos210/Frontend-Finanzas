@@ -16,14 +16,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Tu usuario" 
-                                name= "Username" required [(ngModel)]="formModel.Username" />
+                                name= "Username" required [(ngModel)]="formModel.username" />
                             </div>
                            
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Tu contraseña" 
-                                name= "password" required [(ngModel)]="formModel.Password" />
+                                name= "password" required [(ngModel)]="formModel.password" />
 
                             </div>
                            
@@ -31,7 +31,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" class ="btn btn-success">Ingresar</button>
+                        <button type="submit" class ="btn btn-success" (click)="loadDataUsers()" >Ingresar</button>
                     </div>
                     
 

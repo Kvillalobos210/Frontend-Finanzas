@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
-import { User } from '../model/user';
-import { UserService } from '../service/user.service';
+import { Auth } from '../model/auth';
+import { AuthenticationSer } from '../service/auth.service';
+import {Auth_user} from '../model/athenticateuser'
 
 @Component({
   selector: 'app-create-login',
@@ -11,23 +12,44 @@ import { UserService } from '../service/user.service';
 export class CreateLoginComponent implements OnInit {
   
   formModel={
-    Username: '',
-    Password: ''
+    username: '',
+    password: ''
   }
-  users: User[]=[];
 
-  constructor(private router: Router , private userService: UserService) { }
+  auth_user= new Auth_user
+
+  aux:any
+
+  constructor(private router: Router , private authservice: AuthenticationSer) { }
 
   ngOnInit(): void {
 
   }
 
   loadDataUsers(){
-    this.userService.getUserList()
-    .subscribe(users=>this.users=users);
+
+    var x = this.authservice.Auth(this.formModel).subscribe(
+      
+      datos=>{
+        this.aux=datos; console.log("s",this.aux.id); 
+
+        return this.aux.id
+      },
+      error=>console.log(error));
+
+      //console.log("dataid: ",this.aux.id
+
+      if(x){
+        this.router.navigate(['Cartera']);
+      }
+
   }
 
+
+
   
+  
+
 
 
 
