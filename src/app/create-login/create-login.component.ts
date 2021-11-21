@@ -27,31 +27,17 @@ export class CreateLoginComponent implements OnInit {
   }
 
   loadDataUsers(){
-
     var x = this.authservice.Auth(this.formModel).subscribe(
-      
       datos=>{
-        this.aux=datos; console.log("s",this.aux.id); 
-
+        this.aux=datos; console.log("s",this.aux.id);
         return this.aux.id
       },
-      error=>console.log(error));
-
-      //console.log("dataid: ",this.aux.id
-
-      if(x){
+      error=>console.log("errrror",error));
+    
+      if(this.aux.id!=undefined){
         this.router.navigate(['Cartera']);
       }
-
   }
-
-
-
-  
-  
-
-
-
 
 
 }

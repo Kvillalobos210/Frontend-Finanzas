@@ -7,33 +7,34 @@ import { Component, OnInit, ɵCompiler_compileModuleAndAllComponentsAsync__POST_
 })
 export class DescuentoCarteraComponent implements OnInit {
 
-  dias_ano=''
-  plazo_tasa=''
-  tipo_tasa=''
-  tasa_efectiva=''
-  fecha_descuento=''
+  dias_ano='360'
+  plazo_tasa='Anual'
+  tipo_tasa='Efectiva'
+  tasa_efectiva='14.8'
+  tasa_efectiva_=''
+  fecha_descuento='04/05/2021'
 
-  fecha_emision=''
-  fecha_pago=''
-  total_facturado=''
-  retencion=''
+  fecha_emision='11/04/2021'
+  fecha_pago='10/07/2021'
+  total_facturado='15000'
+  retencion='0'
   
   motivo=''
   tipo=''
   valor=''
   list_cgi=[{
-    motivo:'',
-    tipo:'',
-    valor:''
+    motivo:'Portes',
+    tipo:'En efectivo',
+    valor:'11.7'
   }];
 
   motivof=''
   tipof=''
   valorf=''
   list_cgf=[{
-    motivo:'',
-    tipo:'',
-    valor:''
+    motivo:'Portes',
+    tipo:'En efectivo',
+    valor:'17'
   }];
 
   list_factura=[{
@@ -57,6 +58,9 @@ export class DescuentoCarteraComponent implements OnInit {
 
   cf:number[]
 
+  
+  dias=0
+
   constructor() { 
     this.fecha_d=[""]
     this.fecha_e=[""]
@@ -67,14 +71,17 @@ export class DescuentoCarteraComponent implements OnInit {
     this.cf=[]
   }
 
+  a="asd"+1;
+
   ngOnInit(): void {
     if(this.bol){
       //this.list_cgi.pop()
       //this.list_cgf.pop()
       this.list_factura.pop()
+      console.log(this.a)
     }
     //this.conversion_tasa('5')
-    this.conversion_tasa()
+    //this.conversion_tasa()
   }
 
   contador(){
@@ -97,7 +104,6 @@ export class DescuentoCarteraComponent implements OnInit {
       valor:v
     }
     this.list_cgf.push(newcgi)
-    //console.log(this.list_cgf)
   }
 
   agregar_list_cgi(m:string,t:string,v:string){
@@ -107,20 +113,15 @@ export class DescuentoCarteraComponent implements OnInit {
       valor:v
     }
     this.list_cgi.push(newcgi)
-    //console.log(this.list_cgi)
   }
 
   agregar_datos(){
-    console.log(this.dias_ano)
-    console.log(this.plazo_tasa)
-    console.log(this.tasa_efectiva)
-    console.log(this.fecha_descuento)
-    console.log(this.fecha_emision)
-    console.log(this.fecha_pago)
-    console.log(this.total_facturado)
-    console.log(this.retencion)
-    console.log(this.list_cgi)
-    console.log(this.list_cgf)
+    console.log("dias año",this.dias_ano)
+    console.log("dias",this.dias)
+    console.log("plazo tasa",this.plazo_tasa)
+    console.log("tasaefectiva",this.tasa_efectiva)
+ 
+
   }
 
   dividir_fecha(fecha:string){
@@ -131,7 +132,9 @@ export class DescuentoCarteraComponent implements OnInit {
   conversion_tasa(){
 
     var x:number=0
-    var dias=this.restaFechas(this.fecha_descuento,this.fecha_pago)
+    this.dias=this.restaFechas(this.fecha_descuento,this.fecha_pago)
+    
+    this.tasa_efectiva_=this.tasa_efectiva
 
     //falta arreglar el x=math... del primer if
     if(this.tipo_tasa=='Nominal'){
@@ -172,7 +175,40 @@ export class DescuentoCarteraComponent implements OnInit {
     }
 
     else{
-      x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100),dias/parseFloat(this.dias_ano))-1
+
+      
+      if(this.plazo_tasa=='Diario'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/1)-1
+        this.tasa_efectiva=String(x)
+      }if(this.plazo_tasa=='Quincenal'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/15)-1
+        this.tasa_efectiva=String(x)
+      }
+      if(this.plazo_tasa=='Mensual'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/30)-1
+        this.tasa_efectiva=String(x)
+      }
+      if(this.plazo_tasa=='Bimestral'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/60)-1
+        this.tasa_efectiva=String(x)
+      }
+      if(this.plazo_tasa=='Trimestral'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/90)-1
+        this.tasa_efectiva=String(x)
+      }
+      if(this.plazo_tasa=='Cuatrimestral'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/120)-1
+        this.tasa_efectiva=String(x)
+      }
+      if(this.plazo_tasa=='Semestral'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/180)-1
+        this.tasa_efectiva=String(x)
+      }
+      if(this.plazo_tasa=='Anual'){
+        x=Math.pow(1+(parseFloat(this.tasa_efectiva)/100), this.dias/360)-1     
+        this.tasa_efectiva=String(x)
+      }
+      
       return x
     }
     
@@ -257,36 +293,30 @@ export class DescuentoCarteraComponent implements OnInit {
     tcea=Math.pow(aux1,aux2)-1
 
     console.log("tcea: ",tcea)
-    //console.log("gf: ",gf)
-    //console.log("gi: ",gi)
-    //console.log("descuento: ",descuento)
-    //console.log("dias: ",dias)
-    //console.log("valor neto" ,val_neto)
-    //console.log("valor recibido",valor_re)
-    //console.log("valor en",valor_en)
-    //console.log(this.contador_facturas)
 
     if(this.cambio){
     this.valor_en.shift()
     this.fechas_tir.shift()
     }
-    //console.log("valor en antes",this.valor_en)
 
     this.fechas_tir.push(dias)
     this.valor_re=this.valor_re+valor_re
     this.valor_en.push(valor_en)
-    //console.log(this.fechas_tir)
     console.log("valor re ",this.valor_re)
     console.log("valor en despues",this.valor_en)
     console.log("fechas tir ",this.fechas_tir)
 
     this.agregar_list_factura(tcea)
     this.cambio=0
+    
+    this.tasa_efectiva=this.tasa_efectiva_
+    
     return tcea
   }
 
-   IRRCalc() {
-     this.cambio=1
+  IRRCalc() {
+    console.log("entro al a funcion")
+    this.cambio=1
 
 
     var cf=[]
@@ -304,6 +334,7 @@ export class DescuentoCarteraComponent implements OnInit {
     var max = 1.0;
     var guest = 0.5
     do {
+      console.log("entro al while")
       guest = (min + max) / 2;
       var NPV = 0;
       for (var j=0; j<cf.length; j++) {
@@ -315,6 +346,7 @@ export class DescuentoCarteraComponent implements OnInit {
       else {
         max = guest;
       }
+      console.log(guest)
     } while(Math.abs(NPV) > 0.000001);
     console.log(guest)
     this.TCEA=guest*100
