@@ -1,5 +1,10 @@
+import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit, ɵCompiler_compileModuleAndAllComponentsAsync__POST_R3__ } from '@angular/core';
-
+import { Bill } from '../model/bill';
+import { BillService } from '../service/bill.service';
+import {ActivatedRoute ,Router} from '@angular/router'
+import { PortfolioService } from '../service/portfolio.service';
+import { Portfolio } from '../model/portfolio';
 @Component({
   selector: 'app-descuento-cartera',
   templateUrl: './descuento-cartera.component.html',
@@ -27,7 +32,7 @@ export class DescuentoCarteraComponent implements OnInit {
     tipo:'En efectivo',
     valor:'11.7'
   }];
-
+  
   motivof=''
   tipof=''
   valorf=''
@@ -36,32 +41,34 @@ export class DescuentoCarteraComponent implements OnInit {
     tipo:'En efectivo',
     valor:'17'
   }];
-
   list_factura=[{
-    tcea:0
+    numTotal_Retention:0
   }]
-
   cambio=0
-
   TCEA=0
-
   fechas_tir:number[]
   valor_re=0
   valor_en:number[]
   bol=true
-
   fecha_d:string[]
   fecha_e:string[]
   fecha_p:string[]
-
   contador_facturas=0
-
   cf:number[]
-
-  
   dias=0
 
-  constructor() { 
+  bill= new Bill();
+
+  tir=0
+
+  portafolio= new Portfolio();
+
+  id_porfatolio=JSON.parse(localStorage.getItem('idportfolio')||"{}")
+
+  id_user=JSON.parse(localStorage.getItem('iduser')||"{}")
+
+
+  constructor( private router: Router,private billService: BillService,private portafolioService:PortfolioService) { 
     this.fecha_d=[""]
     this.fecha_e=[""]
     this.fecha_p=[""]
@@ -69,6 +76,7 @@ export class DescuentoCarteraComponent implements OnInit {
     this.fechas_tir=[]
     this.valor_en=[]
     this.cf=[]
+
   }
 
   a="asd"+1;
@@ -78,11 +86,87 @@ export class DescuentoCarteraComponent implements OnInit {
       //this.list_cgi.pop()
       //this.list_cgf.pop()
       this.list_factura.pop()
-      console.log(this.a)
+      //console.log(this.a)
     }
-    //this.conversion_tasa('5')
-    //this.conversion_tasa()
+    this.cargar_datos()
   }
+
+  cargar_datos(){
+
+    console.log("lista vacia",this.list_factura)
+    this.billService.getUserList().
+    subscribe(datos=>{
+      console.log("lista datos: ",datos)
+      if(this.list_factura.length==0){
+        //console.log(this.id_porfatolio)
+        for (var i=0;i<datos.length;i++){
+          if(datos[i].portfolioId==parseInt(this.id_porfatolio))
+          this.list_factura.push(datos[i])
+        }
+      }
+      console.log("lista: ",this.list_factura)
+    })
+  }
+
+  guardar_bill(){
+
+    /*
+    var descuento=this.dividir_fecha(this.fecha_descuento)
+    this.bill.dDiscount_Date.setDate(parseInt(descuento[0]))
+    this.bill.dDiscount_Date.setMonth(parseInt(descuento[1]))
+    this.bill.dDiscount_Date.setFullYear(parseInt(descuento[2]))
+    this.bill.dDiscount_Date.toISOString()
+    
+
+    var emision=this.dividir_fecha(this.fecha_emision)
+    this.bill.dEmission.setDate(parseInt(emision[0]))
+    this.bill.dEmission.setMonth(parseInt(emision[1]))
+    this.bill.dEmission.setFullYear(parseInt(emision[2]))
+    this.bill.dEmission.toISOString()
+
+
+    var pago=this.dividir_fecha(this.fecha_pago)
+    this.bill.dPayment.setDate(parseInt(pago[0]))
+    this.bill.dPayment.setMonth(parseInt(pago[1]))
+    this.bill.dPayment.setFullYear(parseInt(pago[2]))
+    this.bill.dPayment.toDateString()
+    this.bill.dPayment=this.bill.dPayment.toISOString()
+
+    */
+
+    var descuento=this.dividir_fecha(this.fecha_descuento)
+    this.bill.dDiscount_Date=descuento[2]+'-'+descuento[1]+'-'+descuento[1]
+
+    var pago=this.dividir_fecha(this.fecha_pago)
+    this.bill.dPayment=pago[2]+'-'+pago[1]+'-'+pago[0]
+
+    
+    var emision=this.dividir_fecha(this.fecha_emision)
+    this.bill.dEmission=emision[2]+'-'+emision[1]+'-'+emision[0]
+
+
+    this.bill.qTotal_Bill=parseInt(this.total_facturado)
+
+    if(this.tipo_tasa=="Efectiva"){
+      this.bill.type_Interest_RateId=1
+    }if(this.tipo_tasa=="Nominal"){
+      this.bill.type_Interest_RateId=2
+    }
+
+    this.bill.type_Capitalizacion=this.plazo_tasa
+
+    //numTota_Retencion sera el TCEA de cada factura
+    this.bill.numTotal_Retention=this.TCEA
+    this.bill.portfolioId=this.id_porfatolio
+
+    
+    //console.log( "Facturaaa:  ",this.bill)
+    //this.bill.numTotal_Retention=tceaaa
+
+    this.billService.createBill(this.bill)
+     .subscribe(datos=>console.log(datos), error=>console.log(error));
+  }
+
 
   contador(){
     this.contador_facturas=this.contador_facturas+1
@@ -91,7 +175,7 @@ export class DescuentoCarteraComponent implements OnInit {
 
   agregar_list_factura(tcea: number){
     var neww={
-      tcea:tcea
+      numTotal_Retention:tcea
     }
     this.list_factura.push(neww)
 
@@ -116,10 +200,10 @@ export class DescuentoCarteraComponent implements OnInit {
   }
 
   agregar_datos(){
-    console.log("dias año",this.dias_ano)
-    console.log("dias",this.dias)
-    console.log("plazo tasa",this.plazo_tasa)
-    console.log("tasaefectiva",this.tasa_efectiva)
+    //console.log("dias año",this.dias_ano)
+    //console.log("dias",this.dias)
+    //console.log("plazo tasa",this.plazo_tasa)
+    //console.log("tasaefectiva",this.tasa_efectiva)
  
 
   }
@@ -302,14 +386,28 @@ export class DescuentoCarteraComponent implements OnInit {
     this.fechas_tir.push(dias)
     this.valor_re=this.valor_re+valor_re
     this.valor_en.push(valor_en)
-    console.log("valor re ",this.valor_re)
-    console.log("valor en despues",this.valor_en)
-    console.log("fechas tir ",this.fechas_tir)
+    //console.log("valor re ",this.valor_re)
+    //console.log("valor en despues",this.valor_en)
+    //console.log("fechas tir ",this.fechas_tir)
+
+    this.billService.getUserList().
+      subscribe(datos=>{
+        if(this.list_factura.length==0){
+          for (var i=0;i<datos.length;i++){
+            if(datos[i].portfolioId==parseInt(this.id_porfatolio))
+            this.list_factura.push(datos[i])
+          }
+        }
+        console.log("restringido: ",this.list_factura)
+      })
+    //this.list_factura.push()
 
     this.agregar_list_factura(tcea)
     this.cambio=0
+    this.TCEA=tcea
     
     this.tasa_efectiva=this.tasa_efectiva_
+    this.guardar_bill()
     
     return tcea
   }
@@ -321,7 +419,6 @@ export class DescuentoCarteraComponent implements OnInit {
 
     var cf=[]
     var fechas=[]
-    
 
     cf=this.valor_en
     cf.unshift(-this.valor_re)
@@ -334,7 +431,7 @@ export class DescuentoCarteraComponent implements OnInit {
     var max = 1.0;
     var guest = 0.5
     do {
-      console.log("entro al while")
+      //console.log("entro al while")
       guest = (min + max) / 2;
       var NPV = 0;
       for (var j=0; j<cf.length; j++) {
@@ -349,8 +446,32 @@ export class DescuentoCarteraComponent implements OnInit {
       console.log(guest)
     } while(Math.abs(NPV) > 0.000001);
     console.log(guest)
-    this.TCEA=guest*100
-    return guest * 100;
+    this.tir=guest
+    return guest * 100
   }
+
+  volver(){
+    
+    this.router.navigate(['Lista']);
+  }
+
+
+update_tir(){
+
+
+  //console.log(this.id_porfatolio)
+  this.portafolio.id=0
+  this.portafolio.name="EmpresaBill1"
+  this.portafolio.tir=this.tir
+  this.portafolio.userId=parseInt(this.id_user)
+
+
+  this.portafolioService.updateList(this.id_porfatolio,this.portafolio).
+  subscribe(datos=>{console.log(datos)
+  },error=>console.log(error));
+
+
+}
+
 
 }

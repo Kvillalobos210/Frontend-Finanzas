@@ -5,6 +5,7 @@ import { CreateRegisterComponent } from './create-register/create-register.compo
 import { CreateLoginComponent } from './create-login/create-login.component';
 import { CreateInicioComponent } from './create-inicio/create-inicio.component';
 import { DescuentoCarteraComponent } from './descuento-cartera/descuento-cartera.component';
+import { ListaPortafolioComponent } from './lista-portafolio/lista-portafolio.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
  {path: 'Registro', component: CreateRegisterComponent},
  {path: 'InicioSesion', component: CreateLoginComponent},
  {path: 'Cartera', component: DescuentoCarteraComponent},
+ {path: 'Lista', component: ListaPortafolioComponent}
  
  
     

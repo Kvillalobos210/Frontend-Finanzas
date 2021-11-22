@@ -9,6 +9,7 @@ import { CreateLoginComponent } from './create-login/create-login.component';
 import { CreateInicioComponent } from './create-inicio/create-inicio.component';
 import { DescuentoCarteraComponent } from './descuento-cartera/descuento-cartera.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListaPortafolioComponent } from './lista-portafolio/lista-portafolio.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CreateLoginComponent,
     CreateInicioComponent,
     DescuentoCarteraComponent,
+    ListaPortafolioComponent,
 
   ],
   imports: [
@@ -25,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

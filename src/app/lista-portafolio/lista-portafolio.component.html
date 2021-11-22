@@ -1,0 +1,52 @@
+<div class="form">
+    <div class="note">
+        <p>Registra un portafolio</p>
+    </div>
+
+   
+    <div class="form-content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre del portafolio" 
+                    name= "name" required [(ngModel)]="portafolio.name" />
+                </div>
+               
+            </div>
+        </div>
+        <div class="box" >
+            <button type="submit" class ="btn btn-success" (click)="filtro()">Listar</button>
+            
+           
+        </div>
+        <div class="box">
+            <button type="submit" class ="btn btn-success" (click)="agregar()">Agregar</button>
+     
+        </div>
+        
+        <div class="note">
+            <p>Tus portafolios</p>
+        </div>
+
+          
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tir</th>
+            <th scope="col">Redireccion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let list_facturas of portafolio_list; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{list_facturas.name}}</td>
+            <td>{{list_facturas.tir}}</td>
+            <button (click)="ir(list_facturas.id)" >ir</button>
+          </tr>
+        </tbody>
+      </table>
+    
+</div>

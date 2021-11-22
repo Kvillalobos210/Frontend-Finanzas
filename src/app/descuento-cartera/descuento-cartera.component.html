@@ -8,6 +8,9 @@
 <div class="note">
     <p>Cartera de Facturas descontadas a Tasa Efectiva</p>
 </div>
+<div>
+  <button class="col-3 btn btn-info" (click)="volver()"> Volver</button>
+</div>
 
 <form class="form-content">
 <fieldset>
@@ -319,7 +322,7 @@
           <tbody>
             <tr *ngFor = "let list_facturas of list_factura; let i = index">
               <th scope="row">{{i+1}}</th>
-              <td>{{list_facturas.tcea}}</td>
+              <td>{{list_facturas.numTotal_Retention}}</td>
             </tr>
           </tbody>
         </table>
@@ -331,7 +334,14 @@
   >Calcular TCEA de cartera</button>
 </div>
 
-<div>
-   {{TCEA}}
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">{{tir}}</label>
+</div>
+
+<div class="row justify-content-around">
+  <button type="button" class="col-6 btn btn-info" (click)=update_tir()
+  
+  >Update Tir</button>
 </div>
 

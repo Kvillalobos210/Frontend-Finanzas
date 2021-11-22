@@ -23,19 +23,25 @@ export class CreateLoginComponent implements OnInit {
   constructor(private router: Router , private authservice: AuthenticationSer) { }
 
   ngOnInit(): void {
+    this.elimianr_local()
+  }
 
+  elimianr_local(){
+    localStorage.removeItem('iduser')
+    localStorage.removeItem('idportfolio')
   }
 
   loadDataUsers(){
     var x = this.authservice.Auth(this.formModel).subscribe(
       datos=>{
-        this.aux=datos; console.log("s",this.aux.id);
-        return this.aux.id
+        this.aux=datos; console.log("s",this.aux.idf);
+        return this.aux.idf
       },
       error=>console.log("errrror",error));
     
-      if(this.aux.id!=undefined){
-        this.router.navigate(['Cartera']);
+      if(this.aux.idf!=undefined){
+        localStorage.setItem('iduser',this.aux.idf)
+        this.router.navigate(['Lista']);
       }
   }
 
