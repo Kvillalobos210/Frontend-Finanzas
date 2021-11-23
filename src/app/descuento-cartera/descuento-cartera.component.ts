@@ -15,6 +15,7 @@ export class DescuentoCarteraComponent implements OnInit {
   dias_ano='360'
   plazo_tasa='Anual'
   tipo_tasa='Efectiva'
+  periodo_cap=''
   tasa_efectiva='14.8'
   tasa_efectiva_=''
   fecha_descuento='04/05/2021'
@@ -60,6 +61,8 @@ export class DescuentoCarteraComponent implements OnInit {
   bill= new Bill();
 
   tir=0
+
+  nombre_empresa=''
 
   portafolio= new Portfolio();
 
@@ -219,41 +222,301 @@ export class DescuentoCarteraComponent implements OnInit {
     this.dias=this.restaFechas(this.fecha_descuento,this.fecha_pago)
     
     this.tasa_efectiva_=this.tasa_efectiva
+    console.log(this.dias)
 
     //falta arreglar el x=math... del primer if
     if(this.tipo_tasa=='Nominal'){
 
-      if(this.plazo_tasa=='Diario'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }if(this.plazo_tasa=='Quincenal'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/15)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
+      if(this.periodo_cap=="Diario"){
+
+        if(this.plazo_tasa=='Diario'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+          this.tasa_efectiva=String(x)
+
+        }if(this.plazo_tasa=='Quincenal'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/15)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Mensual'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/30)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Bimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/60)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Trimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/90)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Cuatrimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/120)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Semestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/180)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Anual'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/360)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+
+      } if(this.periodo_cap=="Quincenal"){
+
+        if(this.plazo_tasa=='Diario'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.06666)),360)-1
+          this.tasa_efectiva=String(x)
+
+        }if(this.plazo_tasa=='Quincenal'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Mensual'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/2)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Bimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/4)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Trimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/6)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Cuatrimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/8)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Semestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/12)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Anual'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/24)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+
+      }if(this.periodo_cap=="Mensual")
+      {
+
+        if(this.plazo_tasa=='Diario'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.03333)),this.dias)-1
+          this.tasa_efectiva=String(x)
+
+        }if(this.plazo_tasa=='Quincenal'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.5)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Mensual'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Bimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/2)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Trimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/3)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Cuatrimestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/4)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Semestral'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/6)),this.dias)-1
+          this.tasa_efectiva=String(x)
+        }
+        if(this.plazo_tasa=='Anual'){
+          x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/12)),this.dias)-1
+          this.tasa_efectiva=String(x)
+
+        }
       }
-      if(this.plazo_tasa=='Mensual'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/30)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }
-      if(this.plazo_tasa=='Bimestral'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/60)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }
-      if(this.plazo_tasa=='Trimestral'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/90)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }
-      if(this.plazo_tasa=='Cuatrimestral'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/120)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }
-      if(this.plazo_tasa=='Semestral'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/180)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }
-      if(this.plazo_tasa=='Anual'){
-        x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/360)),parseInt(this.dias_ano))-1
-        this.tasa_efectiva=String(x)
-      }
+      if(this.periodo_cap=="Bimestral")
+      {
+  
+          if(this.plazo_tasa=='Diario'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.016666)),this.dias)-1
+            this.tasa_efectiva=String(x)
+  
+          }if(this.plazo_tasa=='Quincenal'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.25)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+          if(this.plazo_tasa=='Mensual'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.5)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+          if(this.plazo_tasa=='Bimestral'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+          if(this.plazo_tasa=='Trimestral'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1.5)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+          if(this.plazo_tasa=='Cuatrimestral'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/2)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+          if(this.plazo_tasa=='Semestral'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/3)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+          if(this.plazo_tasa=='Anual'){
+            x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/6)),this.dias)-1
+            this.tasa_efectiva=String(x)
+          }
+        }
+        if(this.periodo_cap=="Trimestral")
+        {
+    
+            if(this.plazo_tasa=='Diario'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.0111111)),this.dias)-1
+              this.tasa_efectiva=String(x)
+    
+            }if(this.plazo_tasa=='Quincenal'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.166666)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Mensual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.33333)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Bimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/0.6666666)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Trimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Cuatrimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1.3333)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Semestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/2)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Anual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/4)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+          }
+          if(this.periodo_cap=="Cuatrimestral")
+        {
+    
+            if(this.plazo_tasa=='Diario'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(1/120))),this.dias)-1
+              this.tasa_efectiva=String(x)
+    
+            }if(this.plazo_tasa=='Quincenal'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(15/120))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Mensual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(30/120))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Bimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(60/120))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Trimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(90/120))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Cuatrimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Semestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(180/120))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Anual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/3)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+          }
+          if(this.periodo_cap=="Semestral")
+        {
+    
+            if(this.plazo_tasa=='Diario'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(1/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+    
+            }if(this.plazo_tasa=='Quincenal'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(15/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Mensual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(30/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Bimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(60/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Trimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(90/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Cuatrimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(120/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Semestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(180/180))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Anual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/2)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+          }
+          if(this.periodo_cap=="Semestral")
+        {
+    
+            if(this.plazo_tasa=='Diario'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(1/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+    
+            }if(this.plazo_tasa=='Quincenal'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(15/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Mensual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(30/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Bimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(60/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Trimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(90/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Cuatrimestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(120/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Semestral'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/(180/360))),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+            if(this.plazo_tasa=='Anual'){
+              x=Math.pow((1+(parseFloat(this.tasa_efectiva)/100/1)),this.dias)-1
+              this.tasa_efectiva=String(x)
+            }
+          }
+  
+
+     
       
       return x
     }
@@ -361,6 +624,7 @@ export class DescuentoCarteraComponent implements OnInit {
     var gf=this.total_gf()
     var gi= this.total_gi()
     var TEP = this.conversion_tasa()
+    console.log(TEP)
     var d=TEP/(1+TEP)
     var descuento=d*parseFloat(this.total_facturado)
     var val_neto=parseFloat(this.total_facturado)-descuento
@@ -458,17 +722,33 @@ export class DescuentoCarteraComponent implements OnInit {
 
 update_tir(){
 
+  this.portafolioService.getUserList().
+    subscribe(datos=>{
+      for (var i =0; i<datos.length;i++){
+        
+        //console.log(i," : ",datos[i].name)
+        //console.log(i," : ",datos[i].id)
+          if(datos[i].id==parseInt(this.id_porfatolio)){
 
-  //console.log(this.id_porfatolio)
-  this.portafolio.id=0
-  this.portafolio.name="EmpresaBill1"
-  this.portafolio.tir=this.tir
-  this.portafolio.userId=parseInt(this.id_user)
+            //console.log(datos[i].name)
+            this.nombre_empresa=datos[i].name
+            console.log("nombre empresa: ",this.nombre_empresa)
+
+            this.portafolio.id=0
+            this.portafolio.name=this.nombre_empresa
+            this.portafolio.tir=this.tir
+            this.portafolio.userId=parseInt(this.id_user)
 
 
-  this.portafolioService.updateList(this.id_porfatolio,this.portafolio).
-  subscribe(datos=>{console.log(datos)
-  },error=>console.log(error));
+            this.portafolioService.updateList(this.id_porfatolio,this.portafolio).
+            subscribe(datos=>{console.log(datos)
+            },error=>console.log(error));
+
+          }
+      }
+          })
+
+  
 
 
 }
